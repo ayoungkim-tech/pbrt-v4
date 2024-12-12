@@ -228,3 +228,22 @@ is straightforward:
 ```bash
 $ imgtool denoise-optix noisy.exr --outfile denoised.exr
 ```
+
+How to setting the environment
+--------------------------------
+
+1. Make build folder
+2. Install python and cmake
+3. At Command Prompt,
+```bash
+$ mkdir build
+$ cd ./build
+$ cmake .. -G "Visual Studio 16 2019" -A x64
+```
+(The visual studio version can be checked from Visual Studio/Help/About Microsoft Visual Studio)
+4. Open build/PBRT-V4.sln at Visual Studio (not Visual Studio Code)
+5. Select Release, x64 at menu bar and click Build/Build Solution
+6. Run the test scene at build/Release folder
+```bash
+$ pbrt <..\..\pbrt-v4-scenes\example_scene.pbrt>
+```
