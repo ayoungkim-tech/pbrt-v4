@@ -63,12 +63,12 @@ function (CHECK_EXT NAME DIR HASH)
   endif (GIT_FOUND)
 endfunction ()
 
-check_ext ("OpenEXR" "openexr/OpenEXR" 5cfb5dab6dfada731586b0281bdb15ee75e26782)
+check_ext ("OpenEXR" "openexr/OpenEXR" ca757f97033ae7cfcc6130f23c0e9ee86b108b07)
 check_ext ("OpenVDB" "openvdb/nanovdb" 414bed84c2fc22e188eac7b611aa85c7edd7a5a9)
-check_ext ("Ptex" "ptex/src" 4cd8e9a6db2b06e478dfbbd8c26eb6df97f84483)
+check_ext ("Ptex" "ptex/src" 054047d02b9e06e690420b407114d2872435b953)
 check_ext ("double-conversion" "double-conversion/cmake" cc1f75a114aca8d2af69f73a5a959aecbab0e87a)
 check_ext ("filesystem" "filesystem/filesystem" c5f9de30142453eb3c6fe991e82dfc2583373116)
-check_ext ("glfw" "glfw/docs" 4cb36872a5fe448c205d0b46f0e8c8b57530cfe0)
+check_ext ("glfw" "glfw/docs" 7b6aead9fb88b3623e3b3725ebb42670cbe4c579)
 check_ext ("libdeflate" "libdeflate/common" 1fd0bea6ca2073c68493632dafc4b1ddda1bcbc3)
 check_ext ("lodepng" "lodepng/examples" 8c6a9e30576f07bf470ad6f09458a2dcd7a6a84a)
 check_ext ("qoi" "qoi" 028c75fd26e5e0758c7c711216c00404994c1ad3)
@@ -694,17 +694,17 @@ SET (PBRT_UTIL_SOURCE_HEADERS
 
 if (PBRT_CUDA_ENABLED)
   set (PBRT_GPU_SOURCE
-    src/pbrt/gpu/aggregate.cpp
-    src/pbrt/gpu/denoiser.cpp
+    src/pbrt/gpu/optix/aggregate.cpp
+    src/pbrt/gpu/optix/denoiser.cpp
     src/pbrt/gpu/memory.cpp
     src/pbrt/gpu/util.cpp
   )
   set (PBRT_GPU_SOURCE_HEADERS
-    src/pbrt/gpu/aggregate.h
+    src/pbrt/gpu/optix/aggregate.h
     src/pbrt/gpu/cudagl.h
-    src/pbrt/gpu/denoiser.h
+    src/pbrt/gpu/optix/denoiser.h
     src/pbrt/gpu/memory.h
-    src/pbrt/gpu/optix.h
+    src/pbrt/gpu/optix/optix.h
     src/pbrt/gpu/util.h
   )
 
@@ -770,7 +770,7 @@ if (PBRT_CUDA_ENABLED)
     PROPERTIES LANGUAGE CUDA
   )
 
-  cuda_compile_and_embed (PBRT_EMBEDDED_PTX src/pbrt/gpu/optix.cu optix.cu)
+  cuda_compile_and_embed (PBRT_EMBEDDED_PTX src/pbrt/gpu/optix/optix.cu optix.cu)
 endif ()
 
 source_group ("Source Files" FILES ${PBRT_SOURCE})

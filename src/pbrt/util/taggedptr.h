@@ -770,6 +770,7 @@ class TaggedPointer {
 
     PBRT_CPU_GPU
     unsigned int Tag() const { return ((bits & tagMask) >> tagShift); }
+
     template <typename T>
     PBRT_CPU_GPU bool Is() const {
         return Tag() == TypeIndex<T>();
